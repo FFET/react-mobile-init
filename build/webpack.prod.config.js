@@ -20,9 +20,14 @@ const common = require("./webpack.base.config.js");
 module.exports = merge(common, {
   //   devtool: "source-map",
   output: {
-    filename: "js/[contenthash].js",
-    chunkFilename: "js/[contenthash].js",
-    path: path.resolve(__dirname, "../dist")
+    // filename: "js/[contenthash].js",
+    // chunkFilename: "js/[contenthash].js",
+    // path: path.resolve(__dirname, "../dist")
+    filename: "js/[name].[hash:6].js",
+    chunkFilename: "js/[name].[hash:6].js",
+    path: path.resolve(__dirname, "../dist/"),
+    // publicPath: "/dist/"
+    publicPath: "/dist/"
   },
   module: {
     rules: [

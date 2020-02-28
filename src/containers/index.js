@@ -4,8 +4,8 @@
 import React, { Suspense, lazy } from "react";
 import { connect } from "react-redux";
 import {
-  HashRouter as Router,
-  // BrowserRouter as Router,
+  // HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Redirect,
   Switch
@@ -18,7 +18,7 @@ const Main = lazy(() => import(/* webpackChunkName: "main" */ "./Main"));
 
 function App(props) {
   return (
-    <Router>
+    <Router basename="dist">
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path={`/login`} component={Login} />

@@ -188,7 +188,8 @@ module.exports = {
   output: {
     filename: "js/[name].[hash:6].js",
     chunkFilename: "js/[name].[hash:6].js",
-    path: path.resolve(__dirname, "../dist")
+    path: path.resolve(__dirname, "../dist/"),
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -254,8 +255,10 @@ module.exports = {
     }),
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, "../dll/*.dll.js"),
-      outputPath: "js",
-      publicPath: "js",
+      outputPath: "/js",
+      publicPath: "/dist/js",
+      // outputPath: "js",
+      // publicPath: "/js",
       hash: true,
       includeSourcemap: false
     }),
