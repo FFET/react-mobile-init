@@ -21,11 +21,15 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
     "dll": "webpack --config build/webpack.dll.config.js -p --progress --profile",
     "lint": "eslint --fix src",
-    "precommit": "lint-staged",
     "prettier": "prettier --write  \"./**/*.{js,jsx,css,scss,md,json}\"",
     "sort": "npx sort-package-json",
     "start": "npm run dev",
     "test": "npm run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*{js,jsx}": [
