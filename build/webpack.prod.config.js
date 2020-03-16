@@ -20,8 +20,8 @@ const common = require("./webpack.base.config.js");
 module.exports = merge(common, {
   //   devtool: "source-map",
   output: {
-    filename: "js/[contenthash].js",
-    chunkFilename: "js/[contenthash].js",
+    filename: "js/[name].[contenthash:4].js",
+    chunkFilename: "js/[name].[contenthash:4].js",
     path: path.resolve(__dirname, "../dist")
   },
   module: {
@@ -58,8 +58,8 @@ module.exports = merge(common, {
     new webpack.ProgressPlugin(),
     // new webpack.HashedModuleIdsPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/[contenthash].css",
-      chunkFilename: "css/[contenthash].css"
+      filename: "css/[name].[contenthash:4].css",
+      chunkFilename: "css/[name].[contenthash:4].css"
     })
     // Analyzer bundle
     // new BundleAnalyzerPlugin({
