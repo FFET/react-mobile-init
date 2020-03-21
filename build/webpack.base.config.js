@@ -186,8 +186,8 @@ module.exports = {
     index: "./src/index.js"
   },
   output: {
-    filename: "js/[name].[hash:6].js",
-    chunkFilename: "js/[name].[hash:6].js",
+    filename: "js/[name].js",
+    chunkFilename: "js/[name].js",
     path: path.resolve(__dirname, "../dist")
   },
   module: {
@@ -224,6 +224,10 @@ module.exports = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
+    new webpack.ProvidePlugin({
+      http: [path.resolve(__dirname, "../src/utils/request"), "default"],
+      API: [path.resolve(__dirname, "../src/utils/api"), "default"]
+    }),
     // moment local
     // eslint-disable-next-line no-useless-escape
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn|es-us/),

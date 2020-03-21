@@ -20,7 +20,7 @@ export default async function({
   timeout = 2000
 }) {
   // fetch promise
-  const fetchPromise = new Promise((resolve) => {
+  const fetchPromise = new Promise((resolve, reject) => {
     let requestConfig = {
       method: method,
       headers: {
@@ -67,8 +67,20 @@ export default async function({
 
     fetch(url, requestConfig)
       .then((response) => {
-        // 数据检验
-        return response;
+        switch (response.status) {
+          case 401:
+            break;
+          case 403:
+            break;
+          case 404:
+            reject(new Error("接口未找到"));
+            break;
+          case 500:
+            reject(new Error("服务器错误"));
+            break;
+          default:
+            return response;
+        }
       })
       .then((response) => {
         // 解析数据

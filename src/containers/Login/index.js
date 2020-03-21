@@ -20,6 +20,7 @@ function Login(props) {
   //   token && setRedirectToReferrer(true);
   // }, [props]);
 
+  /*eslint-disable react-hooks/exhaustive-deps*/
   useEffect(() => {
     const { token } = props;
     token && setRedirectToReferrer(true);

@@ -2,12 +2,12 @@
  * login action
  */
 
-import { Request, API, Storage } from "@utils";
+import { Storage } from "@utils";
 export const LOGIN = "Login";
 export const LOGOUT = "Logout";
 
 export const loginAction = (data, callback) => async (dispatch) => {
-  let response = await Request({
+  let response = await http({
     url: API.common.login,
     // method: "post",
     data,
