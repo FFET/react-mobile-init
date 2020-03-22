@@ -84,8 +84,10 @@ export default async function({
       })
       .then((response) => {
         // 解析数据
+        const type = response.headers.get("Content-Type").split(";")[0];
         let responseData;
-        switch (requestConfig.headers.Accept) {
+        switch (type) {
+          // switch (requestConfig.headers.Accept) {
           // json
           case "application/json":
             responseData = response.json();
