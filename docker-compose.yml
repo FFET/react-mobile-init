@@ -2,7 +2,7 @@ version: "3"
 services:
   nginx:
     image: nginx:stable-alpine
-    container_name: loong
+    container_name: react-mobile-kit
     ports:
       - 80:80
     volumes:

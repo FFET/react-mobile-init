@@ -1,10 +1,12 @@
 {
-  "name": "loong",
+  "name": "react-mobile-kit",
   "version": "0.1.5",
   "private": true,
-  "description": "react mobile init",
+  "description": "react mobile kit",
   "keywords": [
-    "react"
+    "react",
+    "redux",
+    "react-router"
   ],
   "license": "MIT",
   "author": {
