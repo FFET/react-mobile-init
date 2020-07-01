@@ -4,7 +4,10 @@ export class First extends Component {
   fnLink = () => {
     const { path } = this.props.match;
     console.log(`${path}/second`);
-    this.props.history.push(`${path}second`);
+    this.props.history.push({
+      pathname: `${path}second`,
+      search: "?name=jay"
+    });
   };
   render() {
     return (
