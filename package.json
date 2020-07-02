@@ -28,6 +28,7 @@
     "lint:js": "eslint --fix src",
     "prettier": "prettier --write  \"./**/*.{js,jsx,css,scss,md,json}\"",
     "sort": "npx sort-package-json",
+    "deploy": "node ./scripts/deploy/deploy.js",
     "start": "npm run dev",
     "test": "npm run lint"
   },
@@ -91,6 +92,7 @@
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "node-ssh": "^10.0.2",
     "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",

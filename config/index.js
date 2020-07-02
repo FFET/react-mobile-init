@@ -1,5 +1,7 @@
 /**
- * config
+ * @author Jay
+ * @date 2020-07-01
+ * @description config
  */
 
 const config = {};

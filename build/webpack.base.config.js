@@ -14,6 +14,7 @@ const ENV = process.env.NODE_ENV || "development";
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 // ant theme
 const theme = require("../config/theme.json");
+const { Options } = require("../config/dev");
 
 /**
  * px to rem
@@ -186,9 +187,10 @@ module.exports = {
     index: "./src/index.js"
   },
   output: {
-    filename: "js/[name].js",
-    chunkFilename: "js/[name].js",
-    path: path.resolve(__dirname, "../dist")
+    filename: "js/[name].[hash:6].js",
+    chunkFilename: "js/[name].[hash:6].js",
+    path: path.resolve(__dirname, `../${Options.contentBase}/`),
+    publicPath: Options.publicPath
   },
   module: {
     rules: [
@@ -234,7 +236,7 @@ module.exports = {
     new CleanWebpackPlugin({
       // cleanOnceBeforeBuildPatterns: ["**/*", "!dll/**"]
     }),
-    new CopyPlugin([{ from: "src/json/", to: "json/" }]),
+    new CopyPlugin([{ from: "src/json/", to: `json/` }]),
     new webpack.DllReferencePlugin({
       manifest: require("../dll/ui.manifest.json")
     }),
@@ -259,12 +261,14 @@ module.exports = {
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, "../dll/*.dll.js"),
       outputPath: "js",
-      publicPath: "js",
+      publicPath: `${Options.publicPath}js`,
       hash: true,
       includeSourcemap: false
     }),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+      "process.env.publicPath": JSON.stringify(Options.publicPath),
+      "process.env.router": JSON.stringify(Options.router),
       BUILD_ENV: JSON.stringify(process.env.BUILD_ENV),
       BUILD_VERSION: JSON.stringify(new Date().toString())
     })

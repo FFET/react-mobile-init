@@ -31,7 +31,10 @@ export default async function({
 
     if (!url) return;
     // url
-    url = url.includes("://") || url.includes("json") ? url : BASE_API + url;
+    url =
+      url.includes("://") || url.includes("json")
+        ? `${process.env.publicPath || "/"}` + url
+        : BASE_API + url;
 
     //token
     if (Storage.get("token")) {
