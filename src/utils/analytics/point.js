@@ -54,7 +54,7 @@ const send = (data) => {
     sw: window.screen.width,
     sh: window.screen.height,
     lang: navigator.language,
-    action: data.join(",")
+    action: data.join(","),
   };
 
   // let args = "";

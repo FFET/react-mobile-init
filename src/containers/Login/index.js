@@ -34,7 +34,7 @@ function Login(props) {
    */
   const fnLogin = async () => {
     const {
-      form: { validateFields }
+      form: { validateFields },
     } = props;
     validateFields(async (err, value) => {
       if (!err) {
@@ -50,13 +50,13 @@ function Login(props) {
 
   if (redirectToReferrer) {
     const { from } = props.location.state || {
-      from: { pathname: "/" } // default site
+      from: { pathname: "/" }, // default site
     };
     return <Redirect to={from} />;
   }
 
   const {
-    form: { getFieldDecorator }
+    form: { getFieldDecorator },
   } = props;
 
   return (
@@ -70,18 +70,18 @@ function Login(props) {
             rules: [
               {
                 required: true,
-                message: "请输入用户名"
-              }
-            ]
+                message: "请输入用户名",
+              },
+            ],
           })(<Input placeholder={"用户名"} maxLength={11} />)}
 
           {getFieldDecorator("password", {
             rules: [
               {
                 required: true,
-                message: "请输入密码"
-              }
-            ]
+                message: "请输入密码",
+              },
+            ],
           })(<Input type="password" placeholder={"密码"} />)}
 
           <Button type="primary" onClick={fnLogin} style={{ width: "100%" }}>
@@ -94,11 +94,11 @@ function Login(props) {
 }
 
 const mapStateToProps = (state) => ({
-  token: state.loginReducer.token
+  token: state.loginReducer.token,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loginAction: bindActionCreators(loginAction, dispatch)
+  loginAction: bindActionCreators(loginAction, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(createForm()(Login));

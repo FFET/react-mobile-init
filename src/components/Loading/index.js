@@ -13,7 +13,7 @@ export default function Loading() {
         justifyContent: "center",
         alignItems: "center",
         color: "#999",
-        fontSize: "0.5rem"
+        fontSize: "0.5rem",
       }}
     >
       Loading

@@ -17,20 +17,20 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(png|svg|jpe?g|gif)$/,
-        use: ["file-loader"]
+        use: ["file-loader"],
       },
       {
         test: /\.(ttf|woff)$/,
-        use: ["file-loader"]
-      }
-    ]
+        use: ["file-loader"],
+      },
+    ],
   },
   plugins: [new webpack.ProgressPlugin()],
   devServer: {
     contentBase: path.join(__dirname, Options.contentBase),
     publicPath: Options.publicPath || "/",
     historyApiFallback: {
-      index: Options.publicPath || "/"
+      index: Options.publicPath || "/",
     },
     compress: true,
     host: "0.0.0.0",
@@ -42,7 +42,7 @@ module.exports = merge(common, {
     disableHostCheck: true,
     overlay: {
       warnings: true,
-      errors: true
-    }
-  }
+      errors: true,
+    },
+  },
 });

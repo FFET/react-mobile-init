@@ -11,29 +11,29 @@ const About = lazy(() => import(/* webpackChunkName: "About" */ "../About"));
 // 路由配置
 const map = {
   "/": {
-    title: "首页"
+    title: "首页",
   },
   "/about": {
-    title: "关于"
+    title: "关于",
   },
   "/about/first": {
     title: "关于1",
-    back: -1
+    back: -1,
   },
   "/about/second": {
     title: "关于二级页面",
-    back: -1
+    back: -1,
   },
   "/about/third": {
     title: "三级页面",
-    back: -2
-  }
+    back: -2,
+  },
 };
 
 function Main({
   history: {
-    location: { pathname }
-  }
+    location: { pathname },
+  },
 }) {
   const [title, setTitle] = useState("");
   const [back, setBack] = useState(false);

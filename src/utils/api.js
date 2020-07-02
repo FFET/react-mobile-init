@@ -7,13 +7,13 @@ const api = {
   common: {
     login: "json/login.json",
     dict: "json/dict.json",
-    sms: "sms"
+    sms: "sms",
   },
   home: {
     menu: "home/menu",
-    banner: "home/banner"
+    banner: "home/banner",
   },
-  message: "message/list"
+  message: "message/list",
 };
 
 export default api;

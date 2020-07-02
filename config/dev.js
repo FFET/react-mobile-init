@@ -12,7 +12,7 @@ const Options = {
   contentBase: "mobile", // 根目录
   publicPath: "/mobile/", // 公共前缀 "/mobile/" or ""  注意 publicPath需要设置鱼contentBase相同
   router: "browser", // 路由模式 hash browser
-  devtool: "cheap-module-source-map" // map
+  devtool: "cheap-module-source-map", // map
 };
 
 module.exports = { Options };

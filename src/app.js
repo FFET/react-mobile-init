@@ -16,13 +16,13 @@ const store = createStore();
 
 class Index extends React.Component {
   state = {
-    dict: []
+    dict: [],
   };
 
   async componentDidMount() {
     // load dict
     let response = await Request({
-      url: API.common.dict
+      url: API.common.dict,
     });
     response.status && this.setState({ dict: response.result });
   }

@@ -11,23 +11,23 @@ ssh
   .connect({
     host: "i.shanghaim.net",
     username: "root",
-    privateKey: "/Users/jay/.ssh/s_rsa"
+    privateKey: "/Users/jay/.ssh/s_rsa",
   })
-  .then(function() {
+  .then(function () {
     console.log("连接成功----------------");
 
     // 上传文件
     ssh.putFile("mobile.zip", "/home/html/mobile.zip").then(
-      function() {
+      function () {
         console.log("上传成功");
 
         ssh
           .execCommand("sh deploy.sh", {
             cwd: "/home/html/",
             stream: "stdout",
-            options: { pty: true }
+            options: { pty: true },
           })
-          .then(function(result) {
+          .then(function (result) {
             console.log(result);
             console.log("发布成功----------------");
             process.exit(0);
@@ -37,7 +37,7 @@ ssh
             process.exit(0);
           });
       },
-      function(error) {
+      function (error) {
         console.log("上传失败", error);
         process.exit(0);
       }

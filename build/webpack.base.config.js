@@ -31,8 +31,8 @@ const px2rem = require("postcss-pxtorem")({
     "padding",
     "margin",
     "line-height",
-    "letter-spacing"
-  ]
+    "letter-spacing",
+  ],
 });
 
 /**
@@ -46,7 +46,7 @@ const postcssLoader =
           ident: "postcss",
           plugins: [
             require("postcss-preset-env")({
-              flexbox: "no-2009"
+              flexbox: "no-2009",
             }),
             px2rem,
             require("cssnano")({
@@ -54,13 +54,13 @@ const postcssLoader =
                 "default",
                 {
                   discardComments: {
-                    removeAll: true
-                  }
-                }
-              ]
-            })
-          ]
-        }
+                    removeAll: true,
+                  },
+                },
+              ],
+            }),
+          ],
+        },
       }
     : {
         loader: "postcss-loader",
@@ -68,11 +68,11 @@ const postcssLoader =
           ident: "postcss",
           plugins: [
             require("postcss-preset-env")({
-              flexbox: "no-2009"
+              flexbox: "no-2009",
             }),
-            px2rem
-          ]
-        }
+            px2rem,
+          ],
+        },
       };
 
 /**
@@ -86,111 +86,113 @@ const cssLoader = [
     use: [
       ENV !== "production"
         ? {
-            loader: "style-loader"
+            loader: "style-loader",
           }
         : {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: "../"
-            }
+              publicPath: "../",
+            },
           },
       {
         loader: "css-loader",
         options: {
-          importLoaders: 1
-        }
+          importLoaders: 1,
+        },
       },
       postcssLoader,
       {
         loader: "less-loader",
         options: {
-          modifyVars: theme,
-          javascriptEnabled: true
-        }
-      }
-    ]
+          lessOptions: {
+            modifyVars: theme,
+            javascriptEnabled: true,
+          },
+        },
+      },
+    ],
   },
   {
     // common
     test: /\.scss|css$/,
     include: [
       // path.resolve(__dirname, "../", "src/components/"),
-      path.resolve(__dirname, "../", "src/styles/")
+      path.resolve(__dirname, "../", "src/styles/"),
     ],
     use: [
       ENV !== "production"
         ? {
-            loader: "style-loader"
+            loader: "style-loader",
           }
         : {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: "../"
-            }
+              publicPath: "../",
+            },
           },
       {
         loader: "css-loader",
         options: {
           // modules: true
-          importLoaders: 2
-        } // translates CSS into CommonJS
+          importLoaders: 2,
+        }, // translates CSS into CommonJS
       },
       postcssLoader,
       {
-        loader: "sass-loader"
+        loader: "sass-loader",
         // options: {
         //   javascriptEnabled: true
         // }
-      }
-    ]
+      },
+    ],
   },
   {
     test: /\.scss$/,
     exclude: [
       /node_modules/,
       // path.resolve(__dirname, "../", "src/components/"),
-      path.resolve(__dirname, "../", "src/styles/")
+      path.resolve(__dirname, "../", "src/styles/"),
     ],
     use: [
       ENV !== "production"
         ? {
-            loader: "style-loader"
+            loader: "style-loader",
           }
         : {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: "../"
-            }
+              publicPath: "../",
+            },
           },
       {
         loader: "css-loader",
         options: {
           modules: {
-            localIdentName: "[local]-[hash:base64:5]" // css module
-          }
-        }
+            localIdentName: "[local]-[hash:base64:5]", // css module
+          },
+        },
       },
       postcssLoader,
       {
-        loader: "sass-loader"
+        loader: "sass-loader",
         // options: {
         //   javascriptEnabled: true
         // }
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
 
 module.exports = {
   mode: ENV,
   entry: {
-    index: "./src/index.js"
+    index: "./src/index.js",
   },
   output: {
     filename: "js/[name].[hash:6].js",
     chunkFilename: "js/[name].[hash:6].js",
     path: path.resolve(__dirname, `../${Options.contentBase}/`),
-    publicPath: Options.publicPath
+    publicPath: Options.publicPath,
   },
   module: {
     rules: [
@@ -198,18 +200,18 @@ module.exports = {
         enforce: "pre",
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "eslint-loader"
+        loader: "eslint-loader",
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
-          cacheDirectory: true
-        }
+          cacheDirectory: true,
+        },
       },
-      ...cssLoader
-    ]
+      ...cssLoader,
+    ],
   },
   resolve: {
     alias: {
@@ -220,15 +222,15 @@ module.exports = {
       "@contexts": path.resolve(__dirname, "../src/contexts/"),
       "@styles": path.resolve(__dirname, "../src/styles/"),
       "@utils": path.resolve(__dirname, "../src/utils/"),
-      "@image": path.resolve(__dirname, "../src/static/images/")
+      "@image": path.resolve(__dirname, "../src/static/images/"),
     },
-    extensions: [".js", ".less", ".scss"]
+    extensions: [".js", ".less", ".scss"],
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new webpack.ProvidePlugin({
       http: [path.resolve(__dirname, "../src/utils/request"), "default"],
-      API: [path.resolve(__dirname, "../src/utils/api"), "default"]
+      API: [path.resolve(__dirname, "../src/utils/api"), "default"],
     }),
     // moment local
     // eslint-disable-next-line no-useless-escape
@@ -236,12 +238,12 @@ module.exports = {
     new CleanWebpackPlugin({
       // cleanOnceBeforeBuildPatterns: ["**/*", "!dll/**"]
     }),
-    new CopyPlugin([{ from: "src/json/", to: `json/` }]),
+    new CopyPlugin({ patterns: [{ from: "src/json/", to: `json/` }] }),
     new webpack.DllReferencePlugin({
-      manifest: require("../dll/ui.manifest.json")
+      manifest: require("../dll/ui.manifest.json"),
     }),
     new webpack.DllReferencePlugin({
-      manifest: require("../dll/react.manifest.json")
+      manifest: require("../dll/react.manifest.json"),
     }),
 
     new HtmlWebpackPlugin({
@@ -255,22 +257,22 @@ module.exports = {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
         removeEmptyAttributes: true,
-        minifyJS: true
-      }
+        minifyJS: true,
+      },
     }),
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, "../dll/*.dll.js"),
       outputPath: "js",
       publicPath: `${Options.publicPath}js`,
       hash: true,
-      includeSourcemap: false
+      includeSourcemap: false,
     }),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
       "process.env.publicPath": JSON.stringify(Options.publicPath),
       "process.env.router": JSON.stringify(Options.router),
       BUILD_ENV: JSON.stringify(process.env.BUILD_ENV),
-      BUILD_VERSION: JSON.stringify(new Date().toString())
-    })
-  ]
+      BUILD_VERSION: JSON.stringify(new Date().toString()),
+    }),
+  ],
 };

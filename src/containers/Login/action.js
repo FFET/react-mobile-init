@@ -11,7 +11,7 @@ export const loginAction = (data, callback) => async (dispatch) => {
     url: API.common.login,
     // method: "post",
     data,
-    headers: { token: data.result }
+    headers: { token: data.result },
   });
 
   if (response.status) {
@@ -26,8 +26,8 @@ export const logoutAction = () => async (dispatch) => {
   dispatch({
     type: LOGOUT,
     data: {
-      token: null
-    }
+      token: null,
+    },
   });
   Session.clear();
 };

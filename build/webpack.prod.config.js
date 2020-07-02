@@ -22,7 +22,7 @@ const { Options } = require("../config/dev");
 module.exports = merge(common, {
   output: {
     filename: "js/[name].[contenthash:6].js",
-    chunkFilename: "js/[name].[contenthash:6].js"
+    chunkFilename: "js/[name].[contenthash:6].js",
   },
   module: {
     rules: [
@@ -33,12 +33,12 @@ module.exports = merge(common, {
             loader: "url-loader",
             options: {
               limit: 8192,
-              name: "image/[hash:6].[ext]"
+              name: "image/[hash:6].[ext]",
               // outputPath: "image/",
               // publicPath: ".."
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       {
         test: /\.(ttf|woff)$/i,
@@ -47,20 +47,20 @@ module.exports = merge(common, {
             loader: "file-loader",
             options: {
               name: "font/[name].[ext]",
-              publicPath: ".."
-            }
-          }
-        ]
-      }
-    ]
+              publicPath: "..",
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new webpack.ProgressPlugin(),
     // new webpack.HashedModuleIdsPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash:4].css",
-      chunkFilename: "css/[name].[contenthash:4].css"
-    })
+      chunkFilename: "css/[name].[contenthash:4].css",
+    }),
     // Analyzer bundle
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 9999
@@ -70,8 +70,8 @@ module.exports = merge(common, {
     new ZipPlugin({
       path: "../",
       pathPrefix: "mobile",
-      filename: "mobile.zip"
-    })
+      filename: "mobile.zip",
+    }),
     // cloud storage
     // new CloudStorageWebpackPlugin({
     //   prefix: "react",
@@ -85,7 +85,7 @@ module.exports = merge(common, {
   ],
   optimization: {
     runtimeChunk: {
-      name: "mainfest"
+      name: "mainfest",
     },
     minimizer: [
       // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
@@ -95,12 +95,12 @@ module.exports = merge(common, {
           cache: true,
           compress: { warnings: true, drop_console: true },
           output: {
-            comments: false
+            comments: false,
             // comments: /Build in/i
-          }
+          },
         },
-        extractComments: false
-      })
+        extractComments: false,
+      }),
     ],
     splitChunks: {
       chunks: "all",
@@ -125,7 +125,7 @@ module.exports = merge(common, {
           chunks: "all",
           minChunks: 1,
           reuseExistingChunk: true,
-          enforce: true
+          enforce: true,
         },
         // moment: {
         //   chunks: "initial",
@@ -140,10 +140,10 @@ module.exports = merge(common, {
           test: /node_modules/,
           name: "vendor",
           priority: 10,
-          enforce: true
-        }
-      }
-    }
+          enforce: true,
+        },
+      },
+    },
     // mobile: {
     //   test: /node_modules\/antd-mobile/,
     //   chunks: "initial",
@@ -151,5 +151,5 @@ module.exports = merge(common, {
     //   priority: 10,
     //   enforce: true
     // }
-  }
+  },
 });

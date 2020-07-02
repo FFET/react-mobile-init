@@ -14,7 +14,7 @@ function store(initialState) {
   const token = Session.get("token");
   if (token) {
     initialState = Object.assign({}, initialState, {
-      loginReducer: { token }
+      loginReducer: { token },
     });
   }
 

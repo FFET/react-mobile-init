@@ -6,7 +6,7 @@ export class First extends Component {
     console.log(`${path}/second`);
     this.props.history.push({
       pathname: `${path}second`,
-      search: "?name=jay"
+      search: "?name=jay",
     });
   };
   render() {

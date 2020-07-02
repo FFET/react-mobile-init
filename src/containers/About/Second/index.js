@@ -5,12 +5,12 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-function Second() {
+function Second(props) {
   let query = useQuery();
   return (
     <div>
       <h1>Second</h1>
-      <div onClick={() => this.props.history.push("/about/third")}>
+      <div onClick={() => props.history.push("/about/third")}>
         第三级页面
         {query.get("name")}
       </div>

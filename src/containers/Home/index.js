@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       menu: { index_top: [], index_middle: [] },
-      banner: []
+      banner: [],
     };
   }
 
