@@ -16,18 +16,15 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const ZipPlugin = require("zip-webpack-plugin");
 const CloudStorageWebpackPlugin = require("cloud-storage-webpack-plugin");
 const common = require("./webpack.base.config.js");
+// 引入暴露出去的配置文件
+const { Options } = require("../config/dev");
 
 module.exports = merge(common, {
-  //   devtool: "source-map",
   output: {
-    // filename: "js/[contenthash].js",
-    // chunkFilename: "js/[contenthash].js",
-    // path: path.resolve(__dirname, "../dist")
-    filename: "js/[name].[hash:6].js",
-    chunkFilename: "js/[name].[hash:6].js",
-    path: path.resolve(__dirname, "../dist/"),
-    // publicPath: "/dist/"
-    publicPath: "/dist/"
+    filename: "js/[name].[contenthash:6].js",
+    chunkFilename: "js/[name].[contenthash:6].js"
+    // path: path.resolve(__dirname, `../${Options.contentBase}/`),
+    // publicPath: Options.publicPath || "/"
   },
   module: {
     rules: [
@@ -65,18 +62,18 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: "css/[contenthash].css",
       chunkFilename: "css/[contenthash].css"
-    })
+    }),
     // Analyzer bundle
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 9999
     // }),
     // new webpack.BannerPlugin("Build in " + new Date().toLocaleString())
     // zip
-    // new ZipPlugin({
-    //   // path: "../",
-    //   // pathPrefix: "www",
-    //   filename: "dist.zip"
-    // }),
+    new ZipPlugin({
+      path: "../",
+      pathPrefix: "mobile",
+      filename: "mobile.zip"
+    })
     // cloud storage
     // new CloudStorageWebpackPlugin({
     //   prefix: "react",

@@ -1,4 +1,4 @@
-# loong
+# react-mobile-kit
 
 ## How to run
 

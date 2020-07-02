@@ -4,8 +4,6 @@
  * @description node ssh deploy
  */
 
-const fs = require("fs");
-const path = require("path");
 const NodeSSH = require("node-ssh");
 const ssh = new NodeSSH();
 
@@ -31,7 +29,7 @@ ssh
           })
           .then(function(result) {
             console.log(result);
-            console.log("断开连接----------------");
+            console.log("发布成功----------------");
             process.exit(0);
           })
           .catch((error) => {
