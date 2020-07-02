@@ -23,8 +23,6 @@ module.exports = merge(common, {
   output: {
     filename: "js/[name].[contenthash:6].js",
     chunkFilename: "js/[name].[contenthash:6].js"
-    // path: path.resolve(__dirname, `../${Options.contentBase}/`),
-    // publicPath: Options.publicPath || "/"
   },
   module: {
     rules: [
@@ -60,9 +58,9 @@ module.exports = merge(common, {
     new webpack.ProgressPlugin(),
     // new webpack.HashedModuleIdsPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/[contenthash].css",
-      chunkFilename: "css/[contenthash].css"
-    }),
+      filename: "css/[name].[contenthash:4].css",
+      chunkFilename: "css/[name].[contenthash:4].css"
+    })
     // Analyzer bundle
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 9999

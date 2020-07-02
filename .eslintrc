@@ -13,7 +13,7 @@
     "no-console": "off",
     "no-undef": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": 0,
+    "react-hooks/exhaustive-deps": "error",
     "react/jsx-handler-names": [
       1,
       {
