@@ -11,13 +11,13 @@ import { Session as Storage } from "@utils/storage";
  * request
  * @param {*} config
  */
-export default async function({
+export default async function ({
   url,
   method = "get",
   data = {},
   headers = { "Content-Type": "application/json" },
   loading = false,
-  timeout = 2000
+  timeout = 2000,
 }) {
   // fetch promise
   const fetchPromise = new Promise((resolve, reject) => {
@@ -25,13 +25,16 @@ export default async function({
       method: method,
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
 
     if (!url) return;
     // url
-    url = url.includes("://") || url.includes("json") ? url : BASE_API + url;
+    url =
+      url.includes("://") || url.includes("json")
+        ? `${process.env.publicPath || "/"}` + url
+        : BASE_API + url;
 
     //token
     if (Storage.get("token")) {
@@ -49,7 +52,7 @@ export default async function({
       const contentType = requestConfig.headers["Content-Type"];
       if (contentType === "application/json") {
         Object.defineProperty(requestConfig, "body", {
-          value: JSON.stringify(data)
+          value: JSON.stringify(data),
         });
       } else if (contentType === "x-www-form-urlencoded") {
         // 表单文件上传
@@ -102,7 +105,7 @@ export default async function({
             responseData = {
               blob,
               filename: response.headers.get("Content-Disposition"),
-              type: "file"
+              type: "file",
             };
 
             break;
@@ -115,7 +118,7 @@ export default async function({
   });
 
   // timeout promise
-  const timeoutPromise = new Promise(function(resolve, reject) {
+  const timeoutPromise = new Promise(function (resolve, reject) {
     const time = setTimeout(() => {
       clearTimeout(time);
       reject(new Error("请求超时"));
@@ -133,7 +136,7 @@ export default async function({
       let { blob, filename } = result;
       blob.then((data) => {
         const blob = new Blob([data], {
-          type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;"
+          type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;",
         });
         const ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
           ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),

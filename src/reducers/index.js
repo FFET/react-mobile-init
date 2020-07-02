@@ -9,7 +9,7 @@ import loginReducer from "../containers/Login/reducer";
 
 const rootReducer = combineReducers({
   demoReducer,
-  loginReducer
+  loginReducer,
 });
 
 export default rootReducer;

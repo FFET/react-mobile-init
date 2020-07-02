@@ -13,7 +13,7 @@ function router() {
   window.addEventListener("load", () => {
     // console.log("load");
     window.track = {
-      time: new Date().getTime()
+      time: new Date().getTime(),
     };
   });
 
@@ -26,7 +26,7 @@ function router() {
       sw: window.screen.width,
       sh: window.screen.height,
       lang: navigator.language,
-      ua: window.navigator.userAgent
+      ua: window.navigator.userAgent,
     };
 
     // console.log(trackVo);
@@ -34,7 +34,7 @@ function router() {
 
     window.track = {
       time: new Date().getTime(),
-      current: e.oldURL
+      current: e.oldURL,
     };
   });
 }

@@ -45,5 +45,5 @@ export default {
   success,
   info,
   loading,
-  hide
+  hide,
 };

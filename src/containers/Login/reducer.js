@@ -4,7 +4,7 @@
 import { LOGIN, LOGOUT } from "./action";
 
 const initialState = {
-  token: null
+  token: null,
 };
 
 const loginReducer = (state = initialState, action) => {

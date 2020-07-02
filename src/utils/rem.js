@@ -15,7 +15,7 @@ function setRootFontSize() {
 setRootFontSize();
 window.addEventListener(
   "resize",
-  function() {
+  function () {
     setRootFontSize();
   },
   false

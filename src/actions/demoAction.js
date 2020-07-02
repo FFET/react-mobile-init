@@ -12,11 +12,11 @@ export const enterPageAction = () => async (dispatch) => {
   dispatch({
     type: ENTER_PAGE,
     data: {
-      inTime: new Date().getTime()
+      inTime: new Date().getTime(),
       // currentModel: model,
       // currentPage: location.href,
       // previousModel: currentModel,
       // previousPage: currentPage
-    }
+    },
   });
 };

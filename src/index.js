@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== "production" && !location.hostname.includes("192"))
   eruda.init({
     container: el,
     useShadowDom: false,
-    autoScale: true
+    autoScale: true,
   });
 }
 

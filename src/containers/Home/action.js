@@ -14,8 +14,8 @@ export const getListAction = ({ page, pageSize, keyword = "" }) => async (dispat
     method: "get",
     data: {
       page,
-      pageSize
-    }
+      pageSize,
+    },
   });
 
   dispatch({
@@ -25,8 +25,8 @@ export const getListAction = ({ page, pageSize, keyword = "" }) => async (dispat
       total: data.totalElements,
       page,
       pageSize,
-      keyword
-    }
+      keyword,
+    },
   });
 };
 
@@ -37,7 +37,7 @@ export const pageAction = ({ page, pageSize, keyword = "" }) => (dispatch) => {
     data: {
       list: data2.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize),
       page,
-      pageSize
-    }
+      pageSize,
+    },
   });
 };
