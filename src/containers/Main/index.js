@@ -4,6 +4,7 @@
 import React, { Suspense, lazy, useState, useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { Menu, Loading, Nav } from "@components";
+import { fnPrefix } from "@utils/router";
 import Style from "./style";
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ "../Home"));
 const About = lazy(() => import(/* webpackChunkName: "About" */ "../About"));
@@ -31,18 +32,23 @@ const map = {
 };
 
 function Main({
+  match,
   history: {
     location: { pathname },
   },
 }) {
   const [title, setTitle] = useState("");
   const [back, setBack] = useState(false);
+
+  console.log("pathname", pathname);
+
   useEffect(() => {
-    const route = map[pathname];
+    const route = map[pathname] || { route: "", title: "默认标题" };
     // console.log(location);
     setTitle(route.title);
     setBack(route.back);
     document.title = route.title;
+    console.log("pathname", pathname);
   }, [pathname]);
 
   return (
@@ -52,14 +58,16 @@ function Main({
       <div className={Style.container}>
         <Suspense fallback={<Loading />}>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Redirect to={{ pathname: `/` }} />
+            <Route exact path={`${fnPrefix(match.url)}/home`} component={Home} />
+            <Route path={`${fnPrefix(match.url)}/about`} component={About} />
+            <Redirect to={{ pathname: `${fnPrefix(match.url)}/home` }} />
           </Switch>
         </Suspense>
       </div>
       {/* 菜单 */}
-      {["/", "/about", "/about/"].includes(pathname) && <Menu />}
+      {["home", "/", "about", "/about/"].includes(pathname.split("/").slice(3).join("/")) && (
+        <Menu />
+      )}
     </div>
   );
 }

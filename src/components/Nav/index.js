@@ -12,11 +12,14 @@ const Nav = (props) => {
   }
   return (
     <div className={Style.nav}>
-      {props.back !== undefined && (
+      {/* {props.back !== undefined && (
         <div className={Style.left} onClick={fnBack}>
           <i className="arrow-left"></i>
         </div>
-      )}
+      )} */}
+      <div className={Style.left} onClick={fnBack}>
+        <i className="arrow-left"></i>
+      </div>
       <div className={Style.title}>{props.title}</div>
     </div>
   );

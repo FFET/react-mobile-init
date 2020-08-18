@@ -1,16 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Style from "./style";
 
-function Menu() {
+function Menu(props) {
+  console.log("props", props);
   return (
     <div className={Style.menu}>
-      <NavLink to="/" exact>
+      <NavLink to={`${props.match.path}home`} exact>
         首页
       </NavLink>
-      <NavLink to="/about">关于</NavLink>
+      <NavLink to={`${props.match.path}about`}>关于</NavLink>
     </div>
   );
 }
 
-export default Menu;
+export default withRouter(Menu);

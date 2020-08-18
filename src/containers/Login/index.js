@@ -8,6 +8,7 @@ import { bindActionCreators } from "redux";
 import { loginAction } from "./action";
 import { Toast, Button, Input } from "@components";
 import { createForm } from "rc-form";
+import { fnPrefix } from "@utils/router";
 import Style from "./style";
 
 import reactSvg from "@image/react.svg";
@@ -49,9 +50,12 @@ function Login(props) {
   };
 
   if (redirectToReferrer) {
+    console.log("adfaf", fnPrefix(props.match.path));
     const { from } = props.location.state || {
-      from: { pathname: "/" }, // default site
+      // from: { pathname: "/" }, // default site
+      from: { pathname: fnPrefix(props.match.path) + "/home" }, // default site
     };
+    console.log("from", from);
     return <Redirect to={from} />;
   }
 
