@@ -6,7 +6,7 @@
 
 const webpack = require("webpack");
 const path = require("path");
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const common = require("./webpack.base.config.js");
 // 引入暴露出去的配置文件
 const { Options } = require("../config/dev");
