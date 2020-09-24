@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { Loading } from "@components";
 import { Route, Redirect, Switch } from "react-router-dom";
 const First = lazy(() => import(/* webpackChunkName: "First" */ "./First"));

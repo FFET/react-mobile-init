@@ -7,7 +7,6 @@
  * disabled
  */
 
-import React from "react";
 import Style from "./style";
 
 function Button(props) {

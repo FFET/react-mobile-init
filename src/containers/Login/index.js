@@ -1,7 +1,7 @@
 /**
  * login
  */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";

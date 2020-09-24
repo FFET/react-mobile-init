@@ -43,35 +43,37 @@ const postcssLoader =
     ? {
         loader: "postcss-loader",
         options: {
-          ident: "postcss",
-          plugins: [
-            require("postcss-preset-env")({
-              flexbox: "no-2009",
-            }),
-            px2rem,
-            require("cssnano")({
-              preset: [
-                "default",
-                {
-                  discardComments: {
-                    removeAll: true,
+          postcssOptions: {
+            plugins: [
+              require("postcss-preset-env")({
+                flexbox: "no-2009",
+              }),
+              px2rem,
+              require("cssnano")({
+                preset: [
+                  "default",
+                  {
+                    discardComments: {
+                      removeAll: true,
+                    },
                   },
-                },
-              ],
-            }),
-          ],
+                ],
+              }),
+            ],
+          },
         },
       }
     : {
         loader: "postcss-loader",
         options: {
-          ident: "postcss",
-          plugins: [
-            require("postcss-preset-env")({
-              flexbox: "no-2009",
-            }),
-            px2rem,
-          ],
+          postcssOptions: {
+            plugins: [
+              require("postcss-preset-env")({
+                flexbox: "no-2009",
+              }),
+              px2rem,
+            ],
+          },
         },
       };
 

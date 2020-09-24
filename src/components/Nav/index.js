@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-handler-names */
-import * as React from "react";
 import { withRouter } from "react-router-dom";
 import Style from "./style";
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Button } from "antd-mobile";
 import Style from "./style";
 
