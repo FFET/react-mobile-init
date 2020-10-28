@@ -1,3 +1,4 @@
+
 import { useLocation } from "react-router-dom";
 
 function useQuery() {
@@ -7,14 +8,10 @@ function useQuery() {
 function Second(props) {
   let query = useQuery();
 
-  const fnLink = () => {
-    props.history.push("/about/third");
-  };
-
   return (
     <div>
       <h1>Second</h1>
-      <div onClick={fnLink}>
+      <div onClick={() => props.history.push("/about/third")}>
         第三级页面
         {query.get("name")}
       </div>

@@ -7,6 +7,7 @@
 /**
  * webpack 参数配置
  */
+
 /**
  * browser mobile前缀
  */
@@ -37,7 +38,6 @@ const Options = {
   contentBase: "mobile", // 根目录
   publicPath: "", // 公共前缀 "/mobile/" or ""  注意 publicPath需要设置与contentBase相同
   router: "hash", // 路由模式 hash browser
-  devtool: "cheap-module-source-map", // map
 };
 
 module.exports = { Options };

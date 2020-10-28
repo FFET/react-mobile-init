@@ -21,7 +21,7 @@ const { Options } = require("../config/dev");
  */
 const px2rem = require("postcss-pxtorem")({
   rootValue: 50,
-  propList: ["*"],
+  propList: ["*"]
 });
 
 /**
