@@ -21,18 +21,7 @@ const { Options } = require("../config/dev");
  */
 const px2rem = require("postcss-pxtorem")({
   rootValue: 50,
-  propList: [
-    "font",
-    "font-size",
-    "width",
-    "max-width",
-    "height",
-    "max-height",
-    "padding",
-    "margin",
-    "line-height",
-    "letter-spacing",
-  ],
+  propList: ["*"],
 });
 
 /**
