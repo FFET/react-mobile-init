@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useLocation } from "react-router-dom";
 
 function useQuery() {
@@ -7,6 +7,7 @@ function useQuery() {
 
 function Second(props) {
   let query = useQuery();
+
   return (
     <div>
       <h1>Second</h1>

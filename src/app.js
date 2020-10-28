@@ -1,7 +1,7 @@
 /**
  * react root component
  */
-import React from "react";
+import { Component } from "react";
 import { Provider } from "react-redux";
 import createStore from "./store";
 import App from "./containers";
@@ -14,7 +14,7 @@ import "./styles";
 
 const store = createStore();
 
-class Index extends React.Component {
+class Index extends Component {
   state = {
     dict: [],
   };

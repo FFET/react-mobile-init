@@ -21,18 +21,7 @@ const { Options } = require("../config/dev");
  */
 const px2rem = require("postcss-pxtorem")({
   rootValue: 50,
-  propList: [
-    "font",
-    "font-size",
-    "width",
-    "max-width",
-    "height",
-    "max-height",
-    "padding",
-    "margin",
-    "line-height",
-    "letter-spacing",
-  ],
+  propList: ["*"]
 });
 
 /**
@@ -43,35 +32,37 @@ const postcssLoader =
     ? {
         loader: "postcss-loader",
         options: {
-          ident: "postcss",
-          plugins: [
-            require("postcss-preset-env")({
-              flexbox: "no-2009",
-            }),
-            px2rem,
-            require("cssnano")({
-              preset: [
-                "default",
-                {
-                  discardComments: {
-                    removeAll: true,
+          postcssOptions: {
+            plugins: [
+              require("postcss-preset-env")({
+                flexbox: "no-2009",
+              }),
+              px2rem,
+              require("cssnano")({
+                preset: [
+                  "default",
+                  {
+                    discardComments: {
+                      removeAll: true,
+                    },
                   },
-                },
-              ],
-            }),
-          ],
+                ],
+              }),
+            ],
+          },
         },
       }
     : {
         loader: "postcss-loader",
         options: {
-          ident: "postcss",
-          plugins: [
-            require("postcss-preset-env")({
-              flexbox: "no-2009",
-            }),
-            px2rem,
-          ],
+          postcssOptions: {
+            plugins: [
+              require("postcss-preset-env")({
+                flexbox: "no-2009",
+              }),
+              px2rem,
+            ],
+          },
         },
       };
 

@@ -1,7 +1,9 @@
 /**
  * root container
  */
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
+
+import * as React from "react";
 import { connect } from "react-redux";
 import { HashRouter, BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Loading from "@components/Loading";

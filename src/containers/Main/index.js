@@ -1,7 +1,7 @@
 /**
  * main
  */
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { Menu, Loading, Nav } from "@components";
 import Style from "./style";

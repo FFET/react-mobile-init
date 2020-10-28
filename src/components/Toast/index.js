@@ -3,7 +3,6 @@
  * toast
  */
 import { Toast, Button } from "antd-mobile";
-import React from "react";
 // import { Icon } from "antd-mobile";
 
 // export default (message, type, duration = 1) => {
