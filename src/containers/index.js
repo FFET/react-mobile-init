@@ -14,6 +14,7 @@ const Router = process.env.router === "hash" ? HashRouter : BrowserRouter;
 // lazy load
 const Login = lazy(() => import(/* webpackChunkName: "login" */ "./Login"));
 const Main = lazy(() => import(/* webpackChunkName: "main" */ "./Main"));
+const Demo = lazy(() => import(/* webpackChunkName: "demo" */ "./Demo"));
 
 function App(props) {
   return (
@@ -21,6 +22,7 @@ function App(props) {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path={`/login`} component={Login} />
+          <Route path={`/demo`} component={Demo} />
           <PrivateRoute path={`/`} component={Main} {...props} />
         </Switch>
       </Suspense>
