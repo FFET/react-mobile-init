@@ -8,6 +8,8 @@ import Style from "./style";
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ "../Home"));
 const About = lazy(() => import(/* webpackChunkName: "About" */ "../About"));
 
+console.log(Style);
+
 // 路由配置
 const map = {
   "/": {

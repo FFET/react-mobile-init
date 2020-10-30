@@ -21,7 +21,7 @@ const { Options } = require("../config/dev");
  */
 const px2rem = require("postcss-pxtorem")({
   rootValue: 50,
-  propList: ["*"]
+  propList: ["*"],
 });
 
 /**
@@ -73,7 +73,7 @@ const cssLoader = [
   {
     // ant-design
     test: /\.less|css$/,
-    include: [/node_modules/],
+    // include: [/node_modules/],
     use: [
       ENV !== "production"
         ? {
@@ -87,10 +87,17 @@ const cssLoader = [
           },
       {
         loader: "css-loader",
+        // options: {
+        //   importLoaders: 1,
+        // },
         options: {
-          importLoaders: 1,
+          modules: {
+            // localIdentName: "[local]-[hash:base64:5]", // css module
+            localIdentName: "[local]", // css module
+          },
         },
       },
+
       postcssLoader,
       {
         loader: "less-loader",
