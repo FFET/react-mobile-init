@@ -1,0 +1,20 @@
+.c-calendar {
+  overflow: auto;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  > div {
+    width: 1.25rem;
+    height: 1rem;
+    background: #eee;
+    display: inline-block;
+    line-height: 1rem;
+    text-align: center;
+  }
+
+  :global(.active) {
+    background-color: red;
+  }
+}

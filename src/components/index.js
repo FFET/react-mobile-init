@@ -9,3 +9,4 @@ export { default as AntButton } from "./AntButton";
 export { default as Input } from "./Input";
 export { default as Loading } from "./Loading";
 export { default as Menu } from "./Menu";
+export { default as Calendar } from "./Calendar";
