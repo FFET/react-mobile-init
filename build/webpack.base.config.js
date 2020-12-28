@@ -13,7 +13,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ENV = process.env.NODE_ENV || "development";
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 // ant theme
-const theme = require("../config/theme.json");
+const theme = require("../config/theme.js");
 const { Options } = require("../config/dev");
 
 /**
