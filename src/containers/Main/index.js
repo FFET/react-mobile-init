@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 /**
  * main
  */
 import { Suspense, lazy, useState, useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
 import { Route, Redirect, Switch } from "react-router-dom";
 import { Menu, Loading, Nav } from "@components";
 import Style from "./style";
@@ -42,9 +44,9 @@ function Main({
   useEffect(() => {
     const route = map[pathname];
     // console.log(location);
-    setTitle(route.title);
-    setBack(route.back);
-    document.title = route.title;
+    setTitle(route?.title);
+    setBack(route?.back);
+    document.title = route?.title;
   }, [pathname]);
 
   return (
