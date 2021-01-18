@@ -3,9 +3,11 @@
  * @since 2020-12-19
  * @description demo router
  */
-
+/* eslint-disable */
 import { Route, Redirect, Switch, NavLink } from "react-router-dom";
+import CacheRoute, { CacheSwitch } from "react-router-cache-route";
 import Listview from "./Listview";
+import ListItem from "./ListItem";
 import Calendar from "./Calendar";
 
 function Menu(props) {
@@ -26,12 +28,13 @@ export default function DemoRouter(props) {
   const { path } = props.match;
   return (
     <div>
-      <Switch>
+      <CacheSwitch>
         <Route exact path={`${path}/`} component={Menu} />
-        <Route path={`${path}/listview`} component={Listview} />
+        <CacheRoute path={`${path}/listview/:id`} component={ListItem} />
+        <CacheRoute path={`${path}/listview`} cacheKey="MyComponent" component={Listview} />
         <Route path={`${path}/calendar`} component={Calendar} />
         <Redirect to={{ pathname: `${path}/` }} />
-      </Switch>
+      </CacheSwitch>
     </div>
   );
 }

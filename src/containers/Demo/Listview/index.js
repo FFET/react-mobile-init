@@ -9,18 +9,25 @@ import { Component } from "react";
 import { ProListView } from "@components";
 import Item from "./Item";
 export class ListviewDemo extends Component {
-  state = {
-    // 数据列表
-    records: [],
-    // 当前页
-    page: 1,
-    // 每页条数
-    pageSize: 10,
-    // 总条数
-    total: 0,
-    // 总页码
-    pages: 0,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      // 数据列表
+      records: [],
+      // 当前页
+      page: 1,
+      // 每页条数
+      pageSize: 10,
+      // 总条数
+      total: 0,
+      // 总页码
+      pages: 0,
+    };
+
+    props.cacheLifecycles.didCache(this.componentDidCache);
+    props.cacheLifecycles.didRecover(this.componentDidRecover);
+  }
 
   componentDidMount() {
     this.fnLoadData();
@@ -69,6 +76,14 @@ export class ListviewDemo extends Component {
         ],
       });
     });
+  };
+
+  componentDidCache = () => {
+    console.log("List cached");
+  };
+
+  componentDidRecover = () => {
+    console.log("List recovered");
   };
 
   render() {
