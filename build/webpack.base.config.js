@@ -15,6 +15,7 @@ const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 // ant theme
 const theme = require("../config/theme.js");
 const { Options } = require("../config/dev");
+const moment = require("moment");
 
 /**
  * px to rem
@@ -71,9 +72,13 @@ const postcssLoader =
  */
 const cssLoader = [
   {
-    // ant-design
     test: /\.less|css$/,
-    // include: [/node_modules/],
+    include: [
+      /node_modules/,
+      path.resolve(__dirname, "../", "src/styles/"),
+      path.resolve(__dirname, "../", "src/components/"),
+      path.resolve(__dirname, "../", "src/bizComponents/"),
+    ],
     use: [
       ENV !== "production"
         ? {
@@ -111,44 +116,11 @@ const cssLoader = [
     ],
   },
   {
-    // common
-    test: /\.scss|css$/,
-    include: [
-      // path.resolve(__dirname, "../", "src/components/"),
-      path.resolve(__dirname, "../", "src/styles/"),
-    ],
-    use: [
-      ENV !== "production"
-        ? {
-            loader: "style-loader",
-          }
-        : {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: "../",
-            },
-          },
-      {
-        loader: "css-loader",
-        options: {
-          // modules: true
-          importLoaders: 2,
-        }, // translates CSS into CommonJS
-      },
-      postcssLoader,
-      {
-        loader: "sass-loader",
-        // options: {
-        //   javascriptEnabled: true
-        // }
-      },
-    ],
-  },
-  {
-    test: /\.scss$/,
+    test: /\.less|css$/,
     exclude: [
       /node_modules/,
-      // path.resolve(__dirname, "../", "src/components/"),
+      path.resolve(__dirname, "../", "src/components/"),
+      path.resolve(__dirname, "../", "src/bizComponents/"),
       path.resolve(__dirname, "../", "src/styles/"),
     ],
     use: [
@@ -167,15 +139,19 @@ const cssLoader = [
         options: {
           modules: {
             localIdentName: "[local]-[hash:base64:5]", // css module
+            // localIdentName: "[local]", // css module
           },
         },
       },
       postcssLoader,
       {
-        loader: "sass-loader",
-        // options: {
-        //   javascriptEnabled: true
-        // }
+        loader: "less-loader",
+        options: {
+          lessOptions: {
+            modifyVars: theme,
+            javascriptEnabled: true,
+          },
+        },
       },
     ],
   },
@@ -201,12 +177,25 @@ module.exports = {
         loader: "eslint-loader",
       },
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
           cacheDirectory: true,
         },
+      },
+      /**
+       *  svg配置
+       */
+      {
+        test: /\.svg$/,
+        use: {
+          loader: "svg-sprite-loader",
+          options: {
+            symbolId: "icon-[name]", // symbolId和use使用的名称对应      <use xlinkHref={"#icon-" + iconClass} />
+          },
+        },
+        include: path.resolve(__dirname, "../src/static/icon/svg"), // 只处理指定svg的文件(所有使用的svg文件放到该文件夹下)
       },
       ...cssLoader,
     ],
@@ -219,8 +208,10 @@ module.exports = {
       "@components": path.resolve(__dirname, "../src/components/"),
       "@contexts": path.resolve(__dirname, "../src/contexts/"),
       "@styles": path.resolve(__dirname, "../src/styles/"),
+      "@static": path.resolve(__dirname, "../src/static/"),
       "@utils": path.resolve(__dirname, "../src/utils/"),
       "@image": path.resolve(__dirname, "../src/static/images/"),
+      "@biz": path.resolve(__dirname, "../src/bizComponents/"),
     },
     extensions: [".js", ".less", ".scss"],
   },
@@ -236,7 +227,12 @@ module.exports = {
     new CleanWebpackPlugin({
       // cleanOnceBeforeBuildPatterns: ["**/*", "!dll/**"]
     }),
-    new CopyPlugin({ patterns: [{ from: "src/json/", to: `json/` }] }),
+    new CopyPlugin({
+      patterns: [
+        { from: "src/json/", to: `json/` },
+        { from: "src/static/images/cover.jpg", to: `static` },
+      ],
+    }),
     new webpack.DllReferencePlugin({
       manifest: require("../dll/ui.manifest.json"),
     }),
@@ -270,7 +266,7 @@ module.exports = {
       "process.env.publicPath": JSON.stringify(Options.publicPath),
       "process.env.router": JSON.stringify(Options.router),
       BUILD_ENV: JSON.stringify(process.env.BUILD_ENV),
-      BUILD_VERSION: JSON.stringify(new Date().toString()),
+      VERSION: JSON.stringify(moment().format("YYYY-MM-DD HH:MM:SS")),
     }),
   ],
 };
