@@ -9,6 +9,7 @@ import CacheRoute, { CacheSwitch } from "react-router-cache-route";
 import Listview from "./Listview";
 import ListItem from "./ListItem";
 import Calendar from "./Calendar";
+import Tooltip from "./Tooltip";
 
 function Menu(props) {
   const { path } = props.match;
@@ -19,6 +20,9 @@ function Menu(props) {
       </div>
       <div>
         <NavLink to={`${path}calendar`}>calendar</NavLink>
+      </div>
+      <div>
+        <NavLink to={`${path}tooltip`}>tooltip</NavLink>
       </div>
     </div>
   );
@@ -33,6 +37,7 @@ export default function DemoRouter(props) {
         <CacheRoute path={`${path}/listview/:id`} component={ListItem} />
         <CacheRoute path={`${path}/listview`} cacheKey="MyComponent" component={Listview} />
         <Route path={`${path}/calendar`} component={Calendar} />
+        <Route path={`${path}/tooltip`} component={Tooltip} />
         <Redirect to={{ pathname: `${path}/` }} />
       </CacheSwitch>
     </div>
