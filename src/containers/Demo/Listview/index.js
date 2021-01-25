@@ -8,6 +8,12 @@
 import { Component } from "react";
 import { ProListView } from "@components";
 import Item from "./Item";
+import {
+  clearCache,
+  dropByCacheKey,
+  refreshByCacheKey,
+  getCachingKeys,
+} from "react-router-cache-route";
 export class ListviewDemo extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +66,7 @@ export class ListviewDemo extends Component {
    * mock 数据
    */
   fnMockData = (params) => {
+    console.log(1111);
     return new Promise((resolve) => {
       setTimeout(resolve, 1000, {
         page: 1,
@@ -78,16 +85,29 @@ export class ListviewDemo extends Component {
     });
   };
 
-  componentDidCache = () => {
-    console.log("List cached");
+  componentDidCache = (e) => {
+    console.log("List cached", e);
   };
 
-  componentDidRecover = () => {
-    console.log("List recovered");
+  componentDidRecover = (e) => {
+    console.log("List recovered", e);
+    // console.log(getCachingKeys());
+    // refreshByCacheKey("MyComponent"); // to refresh
+    // dropByCacheKey("MyComponent"); // to refresh
+
+    // console.log(this.state.records);
+    const { records } = this.state;
+    records.map((item) => (item.name = "jay"));
+    // clearCache();
+
+    this.setState({ records: JSON.parse(JSON.stringify(records)), flag: "123" }, () =>
+      console.log(this.state)
+    );
   };
 
   render() {
-    const { records, page, pages } = this.state;
+    const { records, page, pages, flag } = this.state;
+    console.log("render21222", records);
     return (
       <div>
         <ProListView
