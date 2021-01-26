@@ -9,6 +9,7 @@ import { Menu, Loading, Nav } from "@components";
 import Style from "./style";
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ "../Home"));
 const About = lazy(() => import(/* webpackChunkName: "About" */ "../About"));
+const Iframe = lazy(() => import(/* webpackChunkName: "Iframe" */ "../Iframe"));
 
 console.log(Style);
 
@@ -52,12 +53,16 @@ function Main({
   return (
     <div className={Style.main}>
       {/* 顶部nav */}
-      <Nav title={title} back={back} />
+      {/* <Nav title={title} back={back} /> */}
       <div className={Style.container}>
         <Suspense fallback={<Loading />}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
+            <Route
+              path={["/iframe/:url/:title/:id", "/iframe/:url/:title", "/iframe/:url"]}
+              component={Iframe}
+            />
             <Redirect to={{ pathname: `/` }} />
           </Switch>
         </Suspense>

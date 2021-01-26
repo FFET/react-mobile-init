@@ -24,6 +24,11 @@ function Menu(props) {
       <div>
         <NavLink to={`${path}tooltip`}>tooltip</NavLink>
       </div>
+      <div>
+        <NavLink to={`/iframe/${encodeURIComponent("https://www.baidu.com")}/百度/123`}>
+          iframe
+        </NavLink>
+      </div>
     </div>
   );
 }

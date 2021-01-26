@@ -7,7 +7,7 @@ const Nav = (props) => {
     // props.history.goBack;
     const { back = -1, history } = props;
     console.log("back", back);
-    history.go(back);
+    history.goBack();
   }
   return (
     <div className={Style.nav}>
