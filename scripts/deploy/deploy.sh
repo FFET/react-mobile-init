@@ -1,6 +1,6 @@
 # delopy shell
 # 2020-07-01
 
-rm -rf mobile
-unzip mobile.zip
-rm -rf mobile.zip
+rm -rf dist
+unzip dist.zip
+rm -rf dist.zip

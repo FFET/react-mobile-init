@@ -1,11 +1,18 @@
 /**
- * login action
+ * @author FFET
+ * @since 2021-02-23
+ * @description login action
  */
 
-import { Storage } from "@utils";
+import { Session, Application } from "@utils/storage";
 export const LOGIN = "Login";
 export const LOGOUT = "Logout";
 
+/**
+ * login action
+ * @param {object} data
+ * @param {function} callback
+ */
 export const loginAction = (data, callback) => async (dispatch) => {
   let response = await http({
     url: API.common.login,
@@ -16,13 +23,24 @@ export const loginAction = (data, callback) => async (dispatch) => {
 
   if (response.status) {
     dispatch({ type: LOGIN, data: { token: response.result } });
-    Storage.Session.set("token", response.result);
-    Storage.Session.set("user", JSON.stringify(data));
+    Session.set("token", response.result);
+    Session.set("user", JSON.stringify(data));
     callback();
   }
 };
 
+/**
+ * logout action
+ */
 export const logoutAction = () => async (dispatch) => {
+  http({
+    url: API.common.logout,
+    headers: {
+      utoken: Application.get("token"),
+    },
+    loading: false,
+  });
+
   dispatch({
     type: LOGOUT,
     data: {
@@ -30,4 +48,5 @@ export const logoutAction = () => async (dispatch) => {
     },
   });
   Session.clear();
+  Application.clear();
 };

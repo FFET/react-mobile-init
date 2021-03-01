@@ -8,8 +8,8 @@ import "@utils/rem";
 // analytics
 // import { analytics, timing } from "@utils/analytics";
 
-import FastClick from "fastclick";
-FastClick.attach(document.body);
+// import FastClick from "fastclick";
+// FastClick.attach(document.body);
 
 // if (process.env.NODE_ENV !== "production" && !location.hostname.includes("192")) {
 //   const eruda = require('eruda');

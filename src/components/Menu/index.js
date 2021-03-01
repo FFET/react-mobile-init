@@ -7,7 +7,7 @@ function Menu() {
       <NavLink to="/" exact>
         首页
       </NavLink>
-      <NavLink to="/about">关于</NavLink>
+      <NavLink to="/my">我的</NavLink>
     </div>
   );
 }

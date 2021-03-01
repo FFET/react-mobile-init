@@ -1,0 +1,23 @@
+/**
+ * @author FFET
+ * @since 2021-01-07
+ * @description 手机安全区域适配
+ */
+
+// 适配顶部
+.safeTop() {
+  @supports ((height: constant(safe-area-inset-top)) or (height: env(safe-area-inset-top))) and
+    (-webkit-overflow-scrolling: touch) {
+    padding-top: constant(safe-area-inset-top); /* ios < 11.2 */
+    padding-top: env(safe-area-inset-top); /* ios >= 11.2 */
+  }
+}
+
+// 适配底部
+.safeBottom() {
+  @supports ((height: constant(safe-area-inset-top)) or (height: env(safe-area-inset-top))) and
+    (-webkit-overflow-scrolling: touch) {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

@@ -20,7 +20,7 @@
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=prod webpack --config build/webpack.prod.config.js",
     "build:sit": "cross-env NODE_ENV=production BUILD_ENV=sit webpack --config build/webpack.prod.config.js",
     "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --config build/webpack.prod.config.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
+    "dev": "cross-env NODE_ENV=development BUILD_ENV=dev webpack-dev-server --config build/webpack.dev.config.js",
     "dll": "webpack --config build/webpack.dll.config.js -p --progress --profile",
     "lint": "npm run lint:js & npm run lint:css",
     "lint-staged": "lint-staged",
@@ -48,7 +48,7 @@
   "dependencies": {
     "@babel/runtime": "^7.11.2",
     "antd-mobile": "^2.3.4",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "fastclick": "^1.0.6",
     "moment": "^2.29.0",
@@ -119,6 +119,6 @@
     "zip-webpack-plugin": "^3.0.0"
   },
   "engines": {
-    "node": ">=v14.0.0"
+    "node": ">=v15.0.0"
   }
 }

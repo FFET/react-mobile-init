@@ -10,8 +10,7 @@ import Style from "./style";
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ "../Home"));
 const About = lazy(() => import(/* webpackChunkName: "About" */ "../About"));
 const Iframe = lazy(() => import(/* webpackChunkName: "Iframe" */ "../Iframe"));
-
-console.log(Style);
+const My = lazy(() => import(/* webpackChunkName: "My" */ "../My"));
 
 // 路由配置
 const map = {
@@ -58,6 +57,7 @@ function Main({
         <Suspense fallback={<Loading />}>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route path="/my" component={My} />
             <Route path="/about" component={About} />
             <Route
               path={["/iframe/:url/:title/:id", "/iframe/:url/:title", "/iframe/:url"]}
@@ -68,7 +68,7 @@ function Main({
         </Suspense>
       </div>
       {/* 菜单 */}
-      {["/", "/about", "/about/"].includes(pathname) && <Menu />}
+      {["/", "/my"].includes(pathname) && <Menu />}
     </div>
   );
 }

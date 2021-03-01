@@ -1,24 +1,17 @@
-/* eslint-disable react/react-in-jsx-scope */
 /**
- * button
- * children
- * style
- * onClick
- * disabled
+ * @author FFET
+ * @since 2021-01-05
+ * @description 按钮
  */
 
-import Style from "./style";
+import { Button as AButton } from "antd-mobile";
 
 function Button(props) {
-  let { onClick, children, style, disabled } = props;
-  // 如果是两个文字，中间加空格
-  if (typeof children === "string" && children.length === 2) {
-    children = children.split("").join(" ");
-  }
+  const { children, ...rest } = props;
   return (
-    <button onClick={onClick} className={Style.button} style={style} disabled={disabled}>
-      {children}
-    </button>
+    <AButton {...rest}>
+      <div> {children} </div>
+    </AButton>
   );
 }
 

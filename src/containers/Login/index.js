@@ -1,6 +1,9 @@
 /**
- * login
+ * @author FFET
+ * @since 2021-02-23
+ * @description login container
  */
+
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -89,6 +92,24 @@ function Login(props) {
           </Button>
         </div>
       </div>
+      {console.log("BUILD_ENV", BUILD_ENV)}
+      {/* version */}
+      {BUILD_ENV !== "prod" && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 40,
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            color: "red",
+            fontSize: "14px",
+            opacity: 0.5,
+          }}
+        >
+          Version: {BUILD_ENV} {VERSION}
+        </div>
+      )}
     </>
   );
 }

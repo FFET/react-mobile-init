@@ -1,0 +1,39 @@
+.ui-tabs {
+  .am-tabs-default-bar-underline {
+    border: none !important;
+    &:after {
+      content: " ";
+      display: block;
+      height: 6px;
+      border-radius: 6px;
+      background-color: transparent;
+      margin: auto;
+
+      width: 23px;
+      height: 3px;
+      background: #0061a0;
+      border-radius: 2px;
+    }
+  }
+
+  .am-tabs-tab-bar-wrap {
+    padding-bottom: 4px;
+  }
+
+  .am-tabs-default-bar-tab::after {
+    background-color: transparent !important;
+  }
+
+  .am-tabs-default-bar-tab-active {
+    width: 60px;
+    font-size: 15px;
+    font-family: PingFangSC, PingFangSC-Semibold;
+    font-weight: 600;
+    text-align: center;
+    color: #007abc;
+    line-height: 20px;
+  }
+  // .am-tabs-pane-wrap {
+  //   overflow-y: visible;
+  // }
+}
