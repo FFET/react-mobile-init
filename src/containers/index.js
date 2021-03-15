@@ -2,8 +2,6 @@
  * root container
  */
 import { Suspense, lazy } from "react";
-
-import * as React from "react";
 import { connect } from "react-redux";
 import { HashRouter, BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Loading from "@components/Loading";
@@ -33,27 +31,25 @@ function App(props) {
 /**
  * private route
  */
-class PrivateRoute extends React.Component {
-  render() {
-    let { component: Component, token, ...rest } = this.props;
-    return (
-      <Route
-        {...rest}
-        render={(props) =>
-          token ? (
-            <Component {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: props.location },
-              }}
-            />
-          )
-        }
-      />
-    );
-  }
+function PrivateRoute(props) {
+  let { component: Component, token, ...rest } = props;
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        token ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location },
+            }}
+          />
+        )
+      }
+    />
+  );
 }
 
 const mapStateToProps = (state) => ({

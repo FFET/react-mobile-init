@@ -1,8 +1,13 @@
 /**
- * error boundary
+ * @author FFET
+ * @since 2021-01-06
+ * @description error boundary
  */
+
 import { PureComponent } from "react";
-import Style from "./style";
+import img from "./img/error.svg";
+import { Button } from "@components";
+import "./style";
 class ErrorBoundary extends PureComponent {
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
@@ -23,17 +28,16 @@ class ErrorBoundary extends PureComponent {
     console.log("====================================");
   }
 
-  fnReload = () => {
-    location.reload();
-  };
-
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
       return (
-        <div className={Style.errorPage}>
-          <h1>This Page Not Available</h1>
-          <button onClick={this.fnReload}>Reload</button>
+        <div className="errorPage">
+          <img src={img} />
+          <h2>您的网络加载有延迟</h2>
+          <Button onClick={() => location.reload()} type="primary">
+            请点击刷新
+          </Button>
         </div>
       );
     }

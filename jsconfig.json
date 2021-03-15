@@ -9,7 +9,8 @@
       "@contexts/*": ["src/contexts/*"],
       "@utils/*": ["src/utils/*"],
       "@static/*": ["src/static/*"],
-      "@stories/*": ["src/stories"]
+      "@stories/*": ["src/stories"],
+      "@biz/*": ["src/bizComponents/*"]
     }
   },
   "include": ["src/**/*"],

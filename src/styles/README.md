@@ -1,5 +1,8 @@
-# common style
+# style
 
 - index
-- \_rest
-- \_variable
+- base
+- themes
+- mixinx
+- helpers
+- fonts
