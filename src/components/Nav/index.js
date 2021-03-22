@@ -1,11 +1,11 @@
-/* eslint-disable react/jsx-handler-names */
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Style from "./style";
 
-const Nav = (props) => {
+function Nav(props) {
+  const history = useHistory();
+
   function fnBack() {
-    // props.history.goBack;
-    const { back = -1, history } = props;
+    const { back = -1 } = props;
     console.log("back", back);
     history.goBack();
   }
@@ -19,6 +19,6 @@ const Nav = (props) => {
       <div className={Style.title}>{props.title}</div>
     </div>
   );
-};
+}
 
-export default withRouter(Nav);
+export default Nav;

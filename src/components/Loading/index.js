@@ -1,7 +1,7 @@
 /**
  * loading component
  */
-export default function Loading() {
+export default function Loading({ text }) {
   return (
     <div
       style={{
@@ -14,7 +14,7 @@ export default function Loading() {
         fontSize: "0.5rem",
       }}
     >
-      Loading
+      {text || "Loading"}
     </div>
   );
 }

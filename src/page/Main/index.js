@@ -11,7 +11,7 @@ const Home = lazy(() => import(/* webpackChunkName: "Home" */ "../Home"));
 const About = lazy(() => import(/* webpackChunkName: "About" */ "../About"));
 const Iframe = lazy(() => import(/* webpackChunkName: "Iframe" */ "../Iframe"));
 
-import { DictContext } from "@contexts/DictContext";
+import DictContext from "@contexts/DictContext";
 
 // 路由配置
 const map = {
@@ -70,7 +70,7 @@ function Main({
     <DictContext.Provider value={dict}>
       <div className={Style.main}>
         {/* 顶部nav */}
-        {/* <Nav title={title} back={back} /> */}
+        <Nav title={title} back={back} />
         <div className={Style.container}>
           <Suspense fallback={<Loading />}>
             <Switch>

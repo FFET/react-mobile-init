@@ -204,7 +204,7 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "../src/"),
       "@config": path.resolve(__dirname, "../config/"),
-      "@containers": path.resolve(__dirname, "../src/containers/"),
+      "@page": path.resolve(__dirname, "../src/page/"),
       "@components": path.resolve(__dirname, "../src/components/"),
       "@contexts": path.resolve(__dirname, "../src/contexts/"),
       "@styles": path.resolve(__dirname, "../src/styles/"),

@@ -3,7 +3,7 @@
  */
 import { Provider } from "react-redux";
 import createStore from "./store";
-import App from "./containers";
+import App from "@page";
 import { hot } from "react-hot-loader/root";
 import ErrorBoundary from "@components/ErrorBoundary";
 import "./styles";

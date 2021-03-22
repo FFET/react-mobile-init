@@ -4,8 +4,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@config/*": ["config/*"],
+      "@page/*": ["src/page/*"],
       "@components/*": ["src/components/*"],
-      "@containers/*": ["src/containers/*"],
       "@contexts/*": ["src/contexts/*"],
       "@utils/*": ["src/utils/*"],
       "@static/*": ["src/static/*"],
