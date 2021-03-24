@@ -8,15 +8,16 @@ import "@utils/rem";
 import FastClick from "fastclick";
 FastClick.attach(document.body);
 
-// if (process.env.NODE_ENV !== "production") {
-//   const eruda = require("eruda");
-//   const el = document.createElement("div");
-//   document.body.appendChild(el);
-//   eruda.init({
-//     container: el,
-//     useShadowDom: false,
-//     autoScale: true,
-//   });
-// }
+// import eruda from "eruda";
+if (process.env.NODE_ENV !== "production") {
+  const eruda = require("eruda");
+  const el = document.createElement("div");
+  document.body.appendChild(el);
+  eruda.init({
+    container: el,
+    useShadowDom: false,
+    autoScale: true,
+  });
+}
 
 ReactDOM.render(<App />, document.getElementById("root"));

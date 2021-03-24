@@ -18,6 +18,7 @@
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=prod webpack --config build/webpack.prod.config.js",
     "build:sit": "cross-env NODE_ENV=production BUILD_ENV=sit webpack --config build/webpack.prod.config.js",
     "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --config build/webpack.prod.config.js",
+    "build:analyser": "cross-env NODE_ENV=production BUILD_ENV=prod webpack --config build/webpack.analyser.config.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js",
     "dll": "webpack --config build/webpack.dll.config.js -p --progress --profile",
     "lint": "npm run lint:js & npm run lint:css",
